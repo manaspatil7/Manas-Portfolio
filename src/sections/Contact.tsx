@@ -40,7 +40,7 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        'service_jd0og8m', 
+        'service_du88pyp', 
         'template_wd2z23e', 
         templateParams, 
         'ZfggM7dLwou1E58DH'
