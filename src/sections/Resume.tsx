@@ -122,7 +122,7 @@ const Resume = () => {
           Resume
         </motion.h2>
         <motion.a 
-          href="https://drive.google.com/file/d/1AgiHC4Nl8f-3keWXlLpfhTr5n54tS9pD/view?usp=sharing"
+          href="https://drive.google.com/file/d/1BPGbWNvgk8Z1fzAE7qLdK5Miu-G_V0Yq/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-all duration-300 hover:shadow-lg group"
