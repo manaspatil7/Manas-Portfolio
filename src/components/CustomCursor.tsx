@@ -3,6 +3,21 @@ import React, { useState, useEffect, useCallback } from 'react';
 const CustomCursor = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [cursorFollowerPosition, setCursorFollowerPosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if device is mobile or has touch screen
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isTouchDevice || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const onMouseMove = useCallback((e: MouseEvent) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -12,9 +27,16 @@ const CustomCursor = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('mousemove', onMouseMove);
-    return () => window.removeEventListener('mousemove', onMouseMove);
-  }, [onMouseMove]);
+    if (!isMobile) {
+      window.addEventListener('mousemove', onMouseMove);
+      return () => window.removeEventListener('mousemove', onMouseMove);
+    }
+  }, [onMouseMove, isMobile]);
+
+  // Don't render custom cursor on mobile devices
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>

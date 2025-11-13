@@ -1,4 +1,3 @@
-import React from 'react';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -76,16 +75,34 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
           >
-            <a href="#" className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110">
+            <a 
+              href="https://github.com/manaspatil7" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110"
+            >
               <Github size={24} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110">
+            <a 
+              href="https://www.linkedin.com/in/manas-patil-59521a262/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110"
+            >
               <Linkedin size={24} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110">
+            <a 
+              href="mailto:patilmanas63@gmail.com" 
+              className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110"
+            >
               <Mail size={24} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110">
+            <a 
+              href="https://drive.google.com/file/d/1jNlRPYh2yVkkvCRAF7kWxHUHdyxHT5UT/view?usp=sharing" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-red-600 transition-colors transform hover:scale-110"
+            >
               <FileText size={24} />
             </a>
           </motion.div>
