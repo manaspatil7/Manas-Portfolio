@@ -89,24 +89,36 @@ const Work = () => {
       ref={containerRef}
       className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       style={{ y, opacity, scale }}
+      aria-labelledby="work-heading"
     >
-      <h2 className="text-3xl font-bold mb-12">Selected Work</h2>
+      <h2 id="work-heading" className="text-3xl font-bold mb-12">Selected Work</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <motion.div 
+          <motion.article 
             key={project.id}
             className="group relative overflow-hidden rounded-lg cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2 }}
             onClick={() => window.open(project.github, '_blank')}
+            role="button"
+            tabIndex={0}
+            aria-label={`View ${project.title} project on GitHub`}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                window.open(project.github, '_blank');
+              }
+            }}
           >
             <img 
               src={project.image}
-              alt={project.title}
+              alt={`${project.title} - ${project.description.substring(0, 60)}...`}
               className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
               onError={handleImageError}
               data-index={index}
+              loading="lazy"
+              width="400"
+              height="256"
             />
             <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <div className="text-center p-4">
@@ -120,12 +132,12 @@ const Work = () => {
                   ))}
                 </div>
                 <div className="flex justify-center items-center text-red-600 gap-2">
-                  <Github size={20} />
+                  <Github size={20} aria-hidden="true" />
                   <span className="text-sm">View Repository</span>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </motion.section>

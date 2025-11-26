@@ -3,11 +3,13 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Navigation from './components/Navigation';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
+import SEO from './components/SEO';
 import Home from './sections/Home';
 import About from './sections/About';
 import Work from './sections/Work';
 import Resume from './sections/Resume';
 import Contact from './sections/Contact';
+import { defaultSEO } from './utils/seo';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <div className="bg-black min-h-screen text-white">
+      <SEO config={defaultSEO} />
       <CustomCursor />
       
       {/* Smooth Progress Bar */}

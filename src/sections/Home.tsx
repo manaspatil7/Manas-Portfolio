@@ -73,9 +73,10 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
+      aria-label="Hero section"
     >
       <div className="max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 overflow-hidden">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 overflow-hidden" itemProp="headline">
           <div className="flex flex-wrap">
             {text.split("").map((char, i) => (
               <motion.span
@@ -129,6 +130,7 @@ const Home = () => {
             duration: 0.8,
             ease: "easeOut"
           }}
+          itemProp="description"
         >
           Passionate about creating innovative web solutions and transforming ideas into 
           seamless digital experiences. Specializing in modern web technologies and 
@@ -146,19 +148,21 @@ const Home = () => {
             className={`work-button group relative inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors overflow-hidden ${
               isAnimating ? 'pointer-events-none' : ''
             }`}
+            aria-label="View my portfolio work"
           >
             <span className={`transition-opacity duration-200 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
               View My Work
             </span>
-            <Send className={`transition-all duration-300 ${isAnimating ? 'scale-125' : 'group-hover:translate-x-1'}`} />
+            <Send className={`transition-all duration-300 ${isAnimating ? 'scale-125' : 'group-hover:translate-x-1'}`} aria-hidden="true" />
           </button>
 
           <button
             onClick={scrollToResume}
             className="group inline-flex items-center gap-2 bg-white text-red-600 px-6 py-3 rounded-full hover:bg-gray-100 transition-all duration-300 hover:shadow-lg border-2 border-red-600"
+            aria-label="View my resume"
           >
             <span>View Resume</span>
-            <FileText className="transition-transform duration-300 group-hover:scale-110" />
+            <FileText className="transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
           </button>
         </motion.div>
       </div>

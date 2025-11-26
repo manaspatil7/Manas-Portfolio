@@ -60,8 +60,9 @@ const Contact = () => {
       ref={containerRef}
       className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       style={{ y, opacity, scale }}
+      aria-labelledby="contact-heading"
     >
-      <h2 className="text-3xl font-bold mb-12">Get in Touch</h2>
+      <h2 id="contact-heading" className="text-3xl font-bold mb-12">Get in Touch</h2>
       
       <div className="grid md:grid-cols-2 gap-12">
         <motion.div
@@ -70,20 +71,20 @@ const Contact = () => {
           transition={{ delay: 0.2 }}
         >
           <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-          <div className="space-y-4">
+          <address className="space-y-4 not-italic">
             <div className="flex items-center gap-4">
-              <Mail className="text-red-600" />
-              <span className="text-gray-400"><a href="mailto: patilmanas63@gmail.com" className="text-gray-400 hover:underline">patilmanas63@gmail.com</a></span>
+              <Mail className="text-red-600" aria-hidden="true" />
+              <span className="text-gray-400"><a href="mailto:patilmanas63@gmail.com" className="text-gray-400 hover:underline" aria-label="Email Manas Patil">patilmanas63@gmail.com</a></span>
             </div>
             <div className="flex items-center gap-4">
-              <Phone className="text-red-600" />
-              <span className="text-gray-400"><a href="tel:+91 7710063201" className="text-gray-400 hover:underline">+91 77100*****</a></span>
+              <Phone className="text-red-600" aria-hidden="true" />
+              <span className="text-gray-400"><a href="tel:+917710063201" className="text-gray-400 hover:underline" aria-label="Call Manas Patil">+91 77100*****</a></span>
             </div>
             <div className="flex items-center gap-4">
-              <MapPin className="text-red-600" />
-              <span className="text-gray-400">Mumbai, India</span>
+              <MapPin className="text-red-600" aria-hidden="true" />
+              <span className="text-gray-400" itemProp="addressLocality">Mumbai, India</span>
             </div>
-          </div>
+          </address>
         </motion.div>
 
         <motion.div
@@ -134,10 +135,11 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSending}
-              className="flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors"
+              className="flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Submit contact form"
             >
               {isSending ? 'Sending...' : 'Send Message'}
-              <Send size={20} />
+              <Send size={20} aria-hidden="true" />
             </button>
             {statusMessage && (
               <p className={`mt-2 text-sm ${statusMessage.includes('❌') ? 'text-red-500' : 'text-green-500'}`}>

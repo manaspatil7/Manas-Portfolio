@@ -122,8 +122,11 @@ const Resume = () => {
         {isUrl ? (
           <img 
             src={logo} 
-            alt="Logo" 
+            alt="Company or institution logo" 
             className="w-full h-full object-contain p-1"
+            loading="lazy"
+            width="48"
+            height="48"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
@@ -144,10 +147,12 @@ const Resume = () => {
       ref={containerRef}
       className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       style={{ y, opacity, scale }}
+      aria-labelledby="resume-heading"
     >
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16">
         <motion.h2 
+          id="resume-heading"
           className="text-4xl font-bold text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,8 +167,9 @@ const Resume = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.05 }}
+          aria-label="Download Manas Patil's resume PDF"
         >
-          <Download size={20} className="group-hover:animate-bounce" />
+          <Download size={20} className="group-hover:animate-bounce" aria-hidden="true" />
           Download Resume
         </motion.a>
       </div>
